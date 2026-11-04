@@ -126,7 +126,7 @@ local function LemonGridResistCheck(mission, pawn, weaponId, p1, p2, p3, effectT
 		(_G[Board:GetPawn(spaceDamage.loc):GetType()].Explodes or Board:GetPawn(spaceDamage.loc):GetMutation() == 6 or Board:GetPawn(spaceDamage.loc):GetMutation() == 7) then
 			flag = true
 		end
-		if flag and Game:GetResist() >= 100 and GAME.LemonPreviousGridResist then
+		if flag and Game:GetResist() >= 100 and GAME and GAME.LemonPreviousGridResist then
 			-- Game:SetResist(GAME.LemonPreviousGridResist)
 			-- GAME.LemonPreviousGridResist = nil
 			GAME.LemonUsedGridResist = true
@@ -136,7 +136,7 @@ local function LemonGridResistCheck(mission, pawn, weaponId, p1, p2, p3, effectT
 end
 
 local function LemonGridResistClear()
-	if GAME.LemonUsedGridResist then
+	if GAME and GAME.LemonUsedGridResist then
 		Game:SetResist(GAME.LemonPreviousGridResist)
 		GAME.LemonPreviousGridResist = nil
 		GAME.LemonUsedGridResist = nil
